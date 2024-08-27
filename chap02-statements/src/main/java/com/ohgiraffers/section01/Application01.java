@@ -21,7 +21,7 @@ public class Application01 {
             stmt = con.createStatement(); // connection 이 가진 메서드를 이용
             rset = stmt.executeQuery("SELECT EMP_ID, EMP_NAME FROM EMPLOYEE");
 
-            while (rset.next()) { // 다음께 있으면 트루 ( 끝까지 보여준다는 의미)
+            while (rset.next()) { // 다음께 있으면 트루 ( 끝까지 보여준다는 의미 )
                 System.out.println( rset.getString("EMP_ID") + " " + rset.getString("EMP_NAME"));
             }
 
