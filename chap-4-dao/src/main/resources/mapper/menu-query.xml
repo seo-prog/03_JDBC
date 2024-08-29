@@ -34,6 +34,16 @@
         )
 
     </entry>
+    <entry key="updateMenu">
+        UPDATE TBL_MENU
+        SET MENU_NAME = ?, MENU_PRICE = ? , CATEGORY_CODE =?
+        WHERE MENU_NAME = ?
+    </entry>
+
+    <entry key="deletemenu">
+        DELETE FROM TBL_MENU
+        WHERE MENU_NAME = ?
+    </entry>
 
 
 </properties>

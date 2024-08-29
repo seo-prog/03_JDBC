@@ -110,5 +110,48 @@ public class MenuDAO {
         return result;
     }
 
+    public int updateMenu(Connection con, MenuDTO menuDTO, String menuname ) {
+        PreparedStatement ps = null;
+        int result = 0;
+        String query = prop.getProperty("updateMenu");
+
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(4, menuname);
+            ps.setInt(2, menuDTO.getPrice());
+            ps.setInt(3, menuDTO.getCategoryCode());
+            ps.setString(1, menuDTO.getName());
+            result = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(con);
+            close(ps);
+        }
+        return result;
+
+    }
+
+    public int deleteMenu(Connection con, String menudelete) {
+
+        PreparedStatement ps = null;
+        int result = 0;
+        String query = prop.getProperty("deletemenu");
+
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(1, menudelete);
+            result = ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(con);
+            close(ps);
+
+        }
+        return result;
+    }
+
 
 }

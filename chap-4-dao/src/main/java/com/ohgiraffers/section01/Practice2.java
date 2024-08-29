@@ -5,11 +5,10 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.sql.SQLException;
+import java.util.*;
 
+import static com.ohgiraffers.common.JDBCTemplate.close;
 import static com.ohgiraffers.common.JDBCTemplate.getConnection;
 
 public class Practice2 {
@@ -33,11 +32,23 @@ public class Practice2 {
         try {
             prop.loadFromXML( new FileInputStream("src/main/resources/mapper/manu-query.xml"));
             String query = prop.getProperty("selectAllCategoryList");// -> 쿼리에 넣어주는거 먼저 해줘야함
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Map<Integer, String> map = new HashMap<>();
+                result = rs.getString(1);
 
 
-
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(con);
+            close(ps);
+            close(rs);
+
         }
 
 

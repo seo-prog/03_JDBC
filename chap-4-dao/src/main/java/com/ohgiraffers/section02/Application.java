@@ -15,6 +15,9 @@ public class Application { // 사용자
             System.out.println( " 1. 가장 최신 메뉴 코드 조회");
             System.out.println( " 2. 모든 카테고리 목록 조회 ");
             System.out.println( " 3. 메뉴 등록 ");
+            System.out.println( " 4. 메뉴 삭제 ");
+            System.out.println( " 5. 메뉴 수정  ");
+
             System.out.println( " 9. 프로그램 종료 ~! ");
             int choice = sc.nextInt();
 
@@ -22,9 +25,11 @@ public class Application { // 사용자
                 case 1 : menucontroller.findMaxCode(); break; // findMaxCode() 라는 메소드 호출
                 case 2 : menucontroller.selectcategory(); break;
                 case 3 : menucontroller.insert();break;
+                case 4 : menucontroller.update();break;
+                case 5 : menucontroller.menudelete();break;
                 case 9 : return;
                 default:
-                    System.out.println( " 잘못된 입력 입니다. ㅜㅜ*^^* ");
+                    System.out.println( " 잘못된 입력 입니다.ㅜㅜ ㅜㅜ *^^* ");
                     break;
 
             }
